@@ -1,3 +1,7 @@
+/*
+    A game that generates a random number for you to guess
+*/
+
 use std::cmp::Ordering;
 use std::io;
 use rand::Rng;

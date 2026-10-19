@@ -1,3 +1,7 @@
+/*
+    A program that converts temperatures between Fahrenheit and Celsius
+*/
+
 use std::io;
 
 fn main() {
@@ -25,9 +29,9 @@ fn main() {
                 .read_line(&mut in_temp)
                 .expect("Failed in reading line");
             
-            let in_temp: f64 = in_temp.trim().parse().expect("Error: NaN");
+            let in_temp: f32 = in_temp.trim().parse().expect("Error: NaN");
 
-            let out_temp: f64 = (in_temp - 32.0) / 1.8;
+            let out_temp: f32 = (in_temp - 32.0) / 1.8;
 
             println!("{in_temp} degrees Fahrenheit is {out_temp} degrees Celsius");
             
@@ -41,9 +45,9 @@ fn main() {
                 .read_line(&mut in_temp)
                 .expect("\nFailed in reading line");
             
-            let in_temp: f64 = in_temp.trim().parse().expect("Error: NaN");
+            let in_temp: f32 = in_temp.trim().parse().expect("Error: NaN");
 
-            let out_temp: f64 = (in_temp * 1.8) + 32.0;
+            let out_temp: f32 = (in_temp * 1.8) + 32.0;
 
             println!("{in_temp} degrees Celsius is {out_temp} degrees Fahrenheit");
 
