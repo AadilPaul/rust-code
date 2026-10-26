@@ -47,7 +47,7 @@ fn main() {
         println!("\t1.) Make a square");
         println!("\t2.) Make a rectangle");
         println!("\t3.) Exit the program");
-        io::stdin().read_line(&mut option).expect("Readln error at ln .. of src/main.rs");
+        io::stdin().read_line(&mut option).expect("Readln error at ln 50 of src/main.rs");
         // let option = option.trim();
 
         if option.trim() == "2" {
@@ -56,11 +56,11 @@ fn main() {
             in_width.clear();
             // Get length
             println!("Enter your rectangle's length: ");
-            io::stdin().read_line(&mut in_length).expect("Readln failure at ln 46 in src/main.rs");
+            io::stdin().read_line(&mut in_length).expect("Readln failure at ln 59 in src/main.rs");
 
             // Get width
             println!("Enter your rectangle's width");
-            io::stdin().read_line(&mut in_width).expect("Readln failure at ln 48 in src/main.rs");
+            io::stdin().read_line(&mut in_width).expect("Readln failure at ln 63 in src/main.rs");
 
             // Convert in_length to a u32
             let in_length: u32 = match in_length.trim().parse() {
@@ -89,7 +89,7 @@ fn main() {
                 println!("\t4.) View the size of your rectangle");
                 println!("\t5.) Make a different shape");
                 choice.clear();
-                io::stdin().read_line(&mut choice).expect("Readln error at ln .. of src/main.rs");
+                io::stdin().read_line(&mut choice).expect("Readln error at ln 92 of src/main.rs");
 
                 if choice.trim() == "1" {
                     println!(
@@ -124,9 +124,12 @@ fn main() {
 
             println!("Enter the size of your square: ");
             in_length.clear();
-            io::stdin().read_line(&mut in_length).expect("Readln failure at ln 79 in src/main.rs");
-            let in_length: u32 = in_length.trim().parse().expect("Readln failure at ln 91 in src/main.rs");
-
+            io::stdin().read_line(&mut in_length).expect("Readln failure at ln 127 in src/main.rs");
+            
+            let in_length: u32 = match in_length.trim().parse() {
+                Ok(num) => num, 
+                Err(_) => continue
+            }; 
             let sq1 = Rectangle::square(in_length);
             let mut choice = String::new();
 
@@ -140,7 +143,7 @@ fn main() {
                 println!("\t5.) Make a different shape");
 
                 choice.clear();
-                io::stdin().read_line(&mut choice).expect("Readln failure at ln 99 in src/main.rs");      
+                io::stdin().read_line(&mut choice).expect("Readln failure at ln 143 in src/main.rs");      
                 // let choice = choice.;
 
                 if choice.trim() == "1" {
