@@ -1,41 +1,10 @@
-/*!
+/*
     A program to calculate the area of a rectangle.
     Made by AadilPaul
 */
 use std::io;
-
-#[derive(Debug)]
-
-struct Rectangle {
-    length: u32,
-    width: u32,
-}
-impl Rectangle {
-    fn area(&self) -> u32 {
-        self.length * self.width
-    }
-
-    fn square(size: u32) -> Self {
-        /// fn square is a constructor shortcut
-        Self {
-            length: size,
-            width: size,
-        }
-    }
-    /// Perimeter returns the perimeter
-    fn perimeter(&self) -> u32 {
-        let perimeter = 2 * (self.length + self.width);
-        perimeter
-    }
-    /// Diagonal returns the diagonal of the rectangle
-    fn diagonal(&self) -> f64 {
-        let p1: f64 = (self.length as f64) * (self.length as f64);
-        let p2: f64 = (self.width as f64) * (self.width as f64);
-        // calculate diagonal
-        let diag = (p1 + p2).sqrt();
-        diag
-    }
-}
+// set up use statement for lib.rs
+use rectangles::Rectangle;
 
 fn main() {
     let mut in_length = String::new();
