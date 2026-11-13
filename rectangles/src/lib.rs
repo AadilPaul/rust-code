@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(PartialEq, Debug)]
 
 pub struct Rectangle {
     pub length: u32,
@@ -43,7 +43,12 @@ mod tests {
             length: 5,
             width: 3,
         };
-        assert_eq!(rect1.area(), 15);
+        assert_eq!(
+            rect1.area(),
+            15,
+            "Error in area function, expected 15, but got `{}` with tested values.",
+            rect1.area()
+        );
     }
     #[test]
     fn perimeter_test() {
@@ -51,14 +56,25 @@ mod tests {
             length: 5,
             width: 3,
         };
-        assert_eq!(rect1.perimeter(), 16);
+        assert_eq!(
+            rect1.perimeter(),
+            16,
+            "Error in perimeter function, expected 16, but got `{}` with tested values.",
+            rect1.perimeter()
+        );
     }
-    #[test] 
+
+    #[test]
     fn diagonal_test() {
         let rect1 = Rectangle {
             length: 4,
             width: 3,
         };
-        assert_eq!(rect1.diagonal(), 5.0);
+        assert_eq!(
+            rect1.diagonal(),
+            5.0,
+            "Error in diagonal function, expected 5.0, but got `{}` with tested values.",
+            rect1.diagonal()
+        );
     }
 }
