@@ -1,5 +1,5 @@
 /*
-    A game that generates a random number for you to guess
+    # A game that generates a random number for you to guess
 */
 
 fn main() {

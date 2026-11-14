@@ -1,15 +1,15 @@
 // use guess_the_number::Guess;
+// TODO: clear out commented old code.
 use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
 
 pub struct Guess {
-    pub value: u32,
+    value: u32,
 }
 impl Guess {
     fn handle_guess(num_guess: u32, guess: u32, secret_number: &u32) -> bool {
         if guess < 1 || guess > 100 {
-            // panic!("Guess value must be between 1 and 100, got {}.", guess); // Don't panic, just ask again.
             println!("Guess value must be between 1 and 100, got {}.", guess);
             return false;
         }
@@ -25,7 +25,7 @@ impl Guess {
         }
         false
     }
-    pub fn new() -> Guess {
+    fn new() -> Guess {
         let guess = rand::thread_rng().gen_range(1..=100);
         Guess { value: guess }
     }
@@ -71,8 +71,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_guess_validity() {
-        let guess = Guess::new();
+    #[should_panic(expected = "value must be between 1 and 100")]
+    fn guess_validity() {
+        let mut guess = Guess::new();
+        guess.value = 1000;
         assert!(
             guess.value >= 1 && guess.value <= 100,
             "Guess value must be between 1 and 100, got {}.",
@@ -81,12 +83,23 @@ mod tests {
     }
 
     #[test]
-    fn test_guess_correct_event() {
+    fn guess_correct_event() {
         let secret_number = 50;
         assert_eq!(
             Guess::handle_guess(1, 50, &secret_number),
             true,
             "Problem with guess handler, expected `true`, but got `false` with tested values."
+        );
+    }
+    #[test]
+    fn too_many_guesses() {
+        let secret_number = 42;
+        let num_guess = 10;
+        let guess = 30;
+        assert_eq!(
+            Guess::handle_guess(num_guess, guess, &secret_number),
+            false,
+            "Guess handler should not return `true` when the number of guesses exceeds the limit."
         );
     }
 }
